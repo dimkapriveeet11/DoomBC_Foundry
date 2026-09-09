@@ -3,17 +3,19 @@
 Этот файл — рабочий трекер автоматизации талантов из `dark-heresy.black-crusade` (Apex Heresy 1.3.4).
 
 Статусы:
-- ✅ — код добавлен в модуль
-- 🛠 — следующий/в работе
-- ⬜ — ещё не автоматизирован
+- ✅ — полностью автоматизировано и реально применяется в Foundry
+- 🟡 — частично автоматизировано: часть логики уже есть, но не весь эффект применяется в Foundry
+- 🛠 — сейчас в работе / следующий талант
+- ⬜ — ещё не автоматизировано
+- ➖ — отдельная автоматизация не требуется или почти не даёт пользы
 
 Всего в экспортированном компендии: **132 таланта**.
 
-> Примечание: наличие ✅ означает, что обработчик уже добавлен в репозиторий; отдельные механики ещё могут требовать теста в Foundry.
+> Статус ✅ ставим только когда механика реально подключена к нужным действиям/броскам Foundry и проверена в игре.
 
 ## Tier 1
 
-- ✅ **Air of Authority** — `xyx0zeRdS2xHwyNk` — prerequisites: Fellowship 30
+- 🟡 **Air of Authority** — `xyx0zeRdS2xHwyNk` — prerequisites: Fellowship 30
 - 🛠 **Ambidextrous** — `bR8wdIAhcEQkend8` — prerequisites: Agility 30
 - ⬜ **Ancient Warrior** — `M1SnKkD6mxtIgrgU` — prerequisites: Fellowship 35, Willpower 35
 - ⬜ **Berserk Charge** — `ZA0SjskeJRWBK8Cv` — prerequisites: None
