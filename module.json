@@ -1,15 +1,15 @@
 {
   "id": "black-crusade-automation",
-  "title": "Black Crusade Automation",
-  "description": "Character talent automation for Black Crusade when using the Apex Heresy system.",
-  "version": "0.1.0",
+  "title": "DoomBC for Foundry",
+  "description": "DoomBC rules implementation and automation for Foundry VTT using Apex Heresy as the base system.",
+  "version": "0.2.0",
   "compatibility": {
     "minimum": "14",
     "verified": "14.367"
   },
   "authors": [
     {
-      "name": "Black Crusade Automation contributors"
+      "name": "DoomBC for Foundry contributors"
     }
   ],
   "esmodules": [
