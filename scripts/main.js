@@ -1,14 +1,23 @@
-const SYSTEM_ID = "doombc";
+import { logger } from "./core/logger.js";
+import { DOOMBC } from "./core/config.js";
+import { registerSettings } from "./core/settings.js";
+import { runMigrations } from "./core/migrations.js";
 
 Hooks.once("init", () => {
+  registerSettings();
+
   game.doombc = {
-    id: SYSTEM_ID,
-    version: game.system?.version ?? "0.1.0"
+    config: DOOMBC,
+    logger
   };
 
-  console.log("DoomBC | init");
+  logger.info("init");
+  logger.debug("Debug logger loaded.");
+  logger.info("Config loaded:", DOOMBC);
 });
 
-Hooks.once("ready", () => {
-  console.log("DoomBC | ready");
+Hooks.once("ready", async () => {
+  logger.info("ready");
+
+  await runMigrations();
 });
