@@ -1,0 +1,12 @@
+{
+  "DOOMBC.SystemName": "DoomBC",
+  "DOOMBC.Actor.Character": "Персонаж",
+  "DOOMBC.Actor.NPC": "NPC",
+  "DOOMBC.Item.Weapon": "Оружие",
+  "DOOMBC.Item.Armor": "Броня",
+  "DOOMBC.Item.Gear": "Снаряжение",
+  "DOOMBC.Item.Skill": "Навык",
+  "DOOMBC.Item.Talent": "Талант",
+  "DOOMBC.Item.Trait": "Трейт",
+  "DOOMBC.Item.PsychicPower": "Психосила"
+}
