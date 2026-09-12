@@ -3,18 +3,22 @@
   "title": "DoomBC for Foundry",
   "description": "Standalone DoomBC game system for Foundry Virtual Tabletop.",
   "version": "0.1.0",
+
   "compatibility": {
     "minimum": "14",
     "verified": "14.367"
   },
+
   "authors": [
     {
       "name": "DoomBC for Foundry contributors"
     }
   ],
+
   "esmodules": [
     "scripts/main.js"
   ],
+
   "languages": [
     {
       "lang": "ru",
@@ -22,21 +26,29 @@
       "path": "lang/ru.json"
     }
   ],
+
   "documentTypes": {
     "Actor": {
       "character": {},
       "npc": {}
     },
+
     "Item": {
-      "weapon": {},
-      "armor": {},
-      "gear": {},
+      "race": {},
+      "subrace": {},
+      "archetype": {},
+      "aspiration": {},
       "skill": {},
       "talent": {},
       "trait": {},
+      "weapon": {},
+      "armor": {},
+      "gear": {},
       "psychicPower": {}
     }
   },
+
   "socket": false,
+
   "url": "https://github.com/dimkapriveeet11/DoomBC_Foundry"
 }
