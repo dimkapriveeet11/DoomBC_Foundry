@@ -12,9 +12,15 @@ import { applySubrace } from "./character/apply-subrace.js";
 import { skipSubrace } from "./character/skip-subrace.js";
 import { applyArchetype } from "./character/apply-archetype.js";
 
+import { generateAspirations } from "./character/generate-aspirations.js";
+import { selectAspiration } from "./character/select-aspiration.js";
+import { setAspirationChoice } from "./character/set-aspiration-choice.js";
+import { confirmAspirations } from "./character/confirm-aspirations.js";
+
 import { DoomBCRaceData } from "./data/race-data.js";
 import { DoomBCSubraceData } from "./data/subrace-data.js";
 import { DoomBCArchetypeData } from "./data/archetype-data.js";
+import { DoomBCAspirationData } from "./data/aspiration-data.js";
 import { DoomBCCharacterData } from "./data/character-data.js";
 
 import { logger } from "./core/logger.js";
@@ -38,6 +44,9 @@ Hooks.once("init", () => {
 
   CONFIG.Item.dataModels.archetype =
     DoomBCArchetypeData;
+
+  CONFIG.Item.dataModels.aspiration =
+    DoomBCAspirationData;
 
   // DoomBC public API
   game.doombc = {
@@ -63,7 +72,12 @@ Hooks.once("init", () => {
       applySubrace,
       skipSubrace,
 
-      applyArchetype
+      applyArchetype,
+
+      generateAspirations,
+      selectAspiration,
+      setAspirationChoice,
+      confirmAspirations
     }
   };
 
@@ -85,6 +99,10 @@ Hooks.once("init", () => {
 
   logger.debug(
     "Archetype Data Model registered."
+  );
+
+  logger.debug(
+    "Aspiration Data Model registered."
   );
 });
 
