@@ -87,6 +87,50 @@ function shiftPairField() {
   });
 }
 
+function advancementPurchaseField() {
+  return new SchemaField({
+    type: new StringField({
+      required: true,
+      nullable: false,
+      initial: ""
+    }),
+
+    key: new StringField({
+      required: true,
+      nullable: false,
+      initial: ""
+    }),
+
+    level: new NumberField({
+      required: true,
+      nullable: false,
+      integer: true,
+      min: 0,
+      initial: 0
+    }),
+
+    advancementPatronage: new StringField({
+      required: true,
+      nullable: false,
+      initial: ""
+    }),
+
+    relation: new StringField({
+      required: true,
+      nullable: false,
+      initial: ""
+    }),
+
+    cost: new NumberField({
+      required: true,
+      nullable: false,
+      integer: true,
+      min: 0,
+      initial: 0
+    })
+  });
+}
+
 export class DoomBCCharacterData
   extends foundry.abstract.TypeDataModel {
 
@@ -147,6 +191,18 @@ export class DoomBCCharacterData
         })
       }),
 
+      patronage: new StringField({
+        required: true,
+        nullable: false,
+        initial: ""
+      }),
+
+      patronageStereotype: new StringField({
+        required: true,
+        nullable: false,
+        initial: ""
+      }),
+
       experience: new SchemaField({
         total: new NumberField({
           required: true,
@@ -162,7 +218,16 @@ export class DoomBCCharacterData
           integer: true,
           min: 0,
           initial: 0
-        })
+        }),
+
+        purchases: new ArrayField(
+          advancementPurchaseField(),
+          {
+            required: true,
+            nullable: false,
+            initial: []
+          }
+        )
       }),
 
       creation: new SchemaField({
@@ -350,6 +415,12 @@ export class DoomBCCharacterData
           }),
 
           aspiration: new BooleanField({
+            required: true,
+            nullable: false,
+            initial: false
+          }),
+
+          patronage: new BooleanField({
             required: true,
             nullable: false,
             initial: false

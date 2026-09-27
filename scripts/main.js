@@ -17,6 +17,22 @@ import { selectAspiration } from "./character/select-aspiration.js";
 import { setAspirationChoice } from "./character/set-aspiration-choice.js";
 import { confirmAspirations } from "./character/confirm-aspirations.js";
 
+import { setPatronage } from "./character/set-patronage.js";
+import { setPatronageStereotype } from "./character/set-patronage-stereotype.js";
+
+import {
+  getAdvancementRelation,
+  getAdvancementCost,
+  getAdvancementCostDetails,
+  getCharacteristicAdvancementCost,
+  getCharacteristicAdvancementCostDetails
+} from "./character/advancement-costs.js";
+
+import {
+  getAvailableExperience,
+  purchaseCharacteristicAdvancement
+} from "./character/purchase-characteristic-advancement.js";
+
 import { DoomBCRaceData } from "./data/race-data.js";
 import { DoomBCSubraceData } from "./data/subrace-data.js";
 import { DoomBCArchetypeData } from "./data/archetype-data.js";
@@ -77,7 +93,20 @@ Hooks.once("init", () => {
       generateAspirations,
       selectAspiration,
       setAspirationChoice,
-      confirmAspirations
+      confirmAspirations,
+
+      setPatronage,
+      setPatronageStereotype,
+
+      getAdvancementRelation,
+      getAdvancementCost,
+      getAdvancementCostDetails,
+
+      getCharacteristicAdvancementCost,
+      getCharacteristicAdvancementCostDetails,
+
+      getAvailableExperience,
+      purchaseCharacteristicAdvancement
     }
   };
 
