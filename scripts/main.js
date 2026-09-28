@@ -33,11 +33,23 @@ import {
   purchaseCharacteristicAdvancement
 } from "./character/purchase-characteristic-advancement.js";
 
+import {
+  purchaseSkillAdvancement
+} from "./character/purchase-skill-advancement.js";
+
 import { DoomBCRaceData } from "./data/race-data.js";
 import { DoomBCSubraceData } from "./data/subrace-data.js";
 import { DoomBCArchetypeData } from "./data/archetype-data.js";
 import { DoomBCAspirationData } from "./data/aspiration-data.js";
+import { DoomBCSkillData } from "./data/skill-data.js";
 import { DoomBCCharacterData } from "./data/character-data.js";
+
+import {
+  SKILLS,
+  getSkillDefinition,
+  getSkillDisplayName,
+  resolveSkillPatronage
+} from "./data/skill-catalog.js";
 
 import { logger } from "./core/logger.js";
 import { DOOMBC } from "./core/config.js";
@@ -64,10 +76,23 @@ Hooks.once("init", () => {
   CONFIG.Item.dataModels.aspiration =
     DoomBCAspirationData;
 
+  CONFIG.Item.dataModels.skill =
+    DoomBCSkillData;
+
   // DoomBC public API
   game.doombc = {
     config: DOOMBC,
     logger,
+
+    skills: {
+      definitions: SKILLS,
+      getDefinition:
+        getSkillDefinition,
+      getDisplayName:
+        getSkillDisplayName,
+      resolvePatronage:
+        resolveSkillPatronage
+    },
 
     character: {
       applyRace,
@@ -106,7 +131,8 @@ Hooks.once("init", () => {
       getCharacteristicAdvancementCostDetails,
 
       getAvailableExperience,
-      purchaseCharacteristicAdvancement
+      purchaseCharacteristicAdvancement,
+      purchaseSkillAdvancement
     }
   };
 
@@ -132,6 +158,10 @@ Hooks.once("init", () => {
 
   logger.debug(
     "Aspiration Data Model registered."
+  );
+
+  logger.debug(
+    "Skill Data Model registered."
   );
 });
 

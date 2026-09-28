@@ -123,9 +123,22 @@ export function getAdvancementRelation(
 ) {
   validateActor(actor);
 
+  const affinity =
+    String(
+      advancementPatronage ?? ""
+    ).trim();
+
+  /*
+   * Common Lore и Trade в DoomBC
+   * всегда считаются дружественными.
+   */
+  if (affinity === "alwaysAllied") {
+    return "allied";
+  }
+
   return getPatronageRelation(
     actor.system.patronage,
-    advancementPatronage
+    affinity
   );
 }
 
@@ -142,7 +155,9 @@ export function getAdvancementCost(
       .trim()
       .toLowerCase();
 
-  if (normalizedType === "characteristic") {
+  if (
+    normalizedType === "characteristic"
+  ) {
     throw new Error(
       "DoomBC | Для Характеристик используй getCharacteristicAdvancementCost()."
     );
