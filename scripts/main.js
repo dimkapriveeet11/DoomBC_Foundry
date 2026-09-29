@@ -37,11 +37,21 @@ import {
   purchaseSkillAdvancement
 } from "./character/purchase-skill-advancement.js";
 
+import {
+  purchaseTalent
+} from "./character/purchase-talent.js";
+
+import {
+  checkTalentPrerequisites,
+  assertTalentPrerequisites
+} from "./character/talent-prerequisites.js";
+
 import { DoomBCRaceData } from "./data/race-data.js";
 import { DoomBCSubraceData } from "./data/subrace-data.js";
 import { DoomBCArchetypeData } from "./data/archetype-data.js";
 import { DoomBCAspirationData } from "./data/aspiration-data.js";
 import { DoomBCSkillData } from "./data/skill-data.js";
+import { DoomBCTalentData } from "./data/talent-data.js";
 import { DoomBCCharacterData } from "./data/character-data.js";
 
 import {
@@ -51,6 +61,12 @@ import {
   resolveSkillPatronage
 } from "./data/skill-catalog.js";
 
+import {
+  TALENTS,
+  getTalentDefinition,
+  getTalentDisplayName
+} from "./data/talent-catalog.js";
+
 import { logger } from "./core/logger.js";
 import { DOOMBC } from "./core/config.js";
 import { registerSettings } from "./core/settings.js";
@@ -59,11 +75,9 @@ import { runMigrations } from "./core/migrations.js";
 Hooks.once("init", () => {
   registerSettings();
 
-  // Actor Data Models
   CONFIG.Actor.dataModels.character =
     DoomBCCharacterData;
 
-  // Item Data Models
   CONFIG.Item.dataModels.race =
     DoomBCRaceData;
 
@@ -79,19 +93,42 @@ Hooks.once("init", () => {
   CONFIG.Item.dataModels.skill =
     DoomBCSkillData;
 
-  // DoomBC public API
+  CONFIG.Item.dataModels.talent =
+    DoomBCTalentData;
+
   game.doombc = {
     config: DOOMBC,
     logger,
 
     skills: {
-      definitions: SKILLS,
+      definitions:
+        SKILLS,
+
       getDefinition:
         getSkillDefinition,
+
       getDisplayName:
         getSkillDisplayName,
+
       resolvePatronage:
         resolveSkillPatronage
+    },
+
+    talents: {
+      definitions:
+        TALENTS,
+
+      getDefinition:
+        getTalentDefinition,
+
+      getDisplayName:
+        getTalentDisplayName,
+
+      checkPrerequisites:
+        checkTalentPrerequisites,
+
+      assertPrerequisites:
+        assertTalentPrerequisites
     },
 
     character: {
@@ -132,7 +169,11 @@ Hooks.once("init", () => {
 
       getAvailableExperience,
       purchaseCharacteristicAdvancement,
-      purchaseSkillAdvancement
+      purchaseSkillAdvancement,
+      purchaseTalent,
+
+      checkTalentPrerequisites,
+      assertTalentPrerequisites
     }
   };
 
@@ -162,6 +203,10 @@ Hooks.once("init", () => {
 
   logger.debug(
     "Skill Data Model registered."
+  );
+
+  logger.debug(
+    "Talent Data Model registered."
   );
 });
 
