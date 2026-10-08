@@ -743,6 +743,609 @@ export const TALENTS = {
 
     description:
       "Повышает эффективность Awareness при поиске скрытых угроз."
+  },
+
+  // ИЗБЕГАНИЕ — DoomBC Core, стр. 65–66. Эффекты пока не автоматизированы.
+  bodyguard: {
+    "key": "bodyguard",
+    "name": "Bodyguard",
+    "tier": 1,
+    "patronage": "nurgle",
+    "prerequisites": "WS 40",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 40,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Позволяет парировать атаки по союзнику при соблюдении дистанции удара."
+  },
+
+  catfall: {
+    "key": "catfall",
+    "name": "Catfall",
+    "tier": 1,
+    "patronage": "slaanesh",
+    "prerequisites": "A 30",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 30,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Уменьшает высоту падения для расчёта урона на A.b, даёт +20 на Группирование и позволяет приземляться на ноги."
+  },
+
+  chomper: {
+    "key": "chomper",
+    "name": "Chomper",
+    "tier": 1,
+    "patronage": "khorne",
+    "prerequisites": "WS 35, Parry +0, Disarm",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 35,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "parry",
+        "value": 0,
+        "specialization": ""
+      },
+      {
+        "type": "talent",
+        "key": "disarm",
+        "value": 0,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Позволяет парировать имеющейся атакой укусом с Балансом 0 и сразу обезоруживать атакующего; неотменённые неизбирательные попадания приходятся в голову."
+  },
+
+  escapeArtist: {
+    "key": "escapeArtist",
+    "name": "Escape Artist",
+    "tier": 1,
+    "patronage": "slaanesh",
+    "prerequisites": "A 40",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 40,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Уменьшает штрафы на тесты А против Snare и для выхода из Борьбы на A.b×5, удваивает конечные Успехи; при исходном штрафе ниже A.b×3 разрешает переброс."
+  },
+
+  flip: {
+    "key": "flip",
+    "name": "Flip",
+    "tier": 1,
+    "patronage": "slaanesh",
+    "prerequisites": "A 45, Acrobatics +10",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 45,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "acrobatics",
+        "value": 10,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "При сбивании с ног позволяет тестом Acrobatics +0 сразу встать; после падения на Трудном Ландшафте позволяет продолжить движение."
+  },
+
+  flourishDance: {
+    "key": "flourishDance",
+    "name": "Flourish Dance",
+    "tier": 1,
+    "patronage": "slaanesh",
+    "prerequisites": "A 40, Trade (Dancer) +0",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "trade",
+        "value": 0,
+        "specialization": "Dancer"
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Позволяет танцем с плащом в свободной руке наложить штраф на атаки одного противника через встречный тест Dancer (A) против Awareness (P)."
+  },
+
+  highGuard: {
+    "key": "highGuard",
+    "name": "High Guard",
+    "tier": 1,
+    "patronage": "khorne",
+    "prerequisites": "Parry +10",
+    "requirements": [
+      {
+        "type": "skill",
+        "key": "parry",
+        "value": 10,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Позволяет проводить Вольт через Parry (WS) вместо Acrobatics (A), учитывая модификаторы баланса рукопашного оружия."
+  },
+
+  pirouette: {
+    "key": "pirouette",
+    "name": "Pirouette",
+    "tier": 1,
+    "patronage": "slaanesh",
+    "prerequisites": "A 40, Acrobatics +0",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "acrobatics",
+        "value": 0,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Позволяет тестом Acrobatics +0 без траты Реакции отскочить с пути Напролом или Тарана."
+  },
+
+  bladeReader: {
+    "key": "bladeReader",
+    "name": "Blade Reader",
+    "tier": 2,
+    "patronage": "khorne",
+    "prerequisites": "WS 40, Scrutiny +0",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "scrutiny",
+        "value": 0,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Позволяет перебрасывать встречные тесты против Финта через Scrutiny (WS); для экзотического оружия требуется владение им или Arms Master."
+  },
+
+  caution: {
+    "key": "caution",
+    "name": "Caution",
+    "tier": 2,
+    "patronage": "undivided",
+    "prerequisites": "P 40, Awareness +0",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "perception",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "awareness",
+        "value": 0,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Раз в Ход позволяет получить 1 Реакцию за ментальное полудействие Концентрации."
+  },
+
+  combatMaster: {
+    "key": "combatMaster",
+    "name": "Combat Master",
+    "tier": 2,
+    "patronage": "khorne",
+    "prerequisites": "WS 30",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 30,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Противники не получают бонус за численное превосходство при рукопашных атаках по персонажу."
+  },
+
+  counterfeint: {
+    "key": "counterfeint",
+    "name": "Counterfeint",
+    "tier": 2,
+    "patronage": "tzeentch",
+    "prerequisites": "P 50, Awareness +20",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "perception",
+        "value": 50,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "awareness",
+        "value": 20,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Позволяет использовать Awareness (P) вместо WS против Финтов, без бонусов от оружия."
+  },
+
+  deflectShot: {
+    "key": "deflectShot",
+    "name": "Deflect Shot",
+    "tier": 2,
+    "patronage": "slaanesh",
+    "prerequisites": "A 50, Parry +10",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 50,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "parry",
+        "value": 10,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Позволяет оружием с Балансом 1+ парировать дозвуковые снаряды и метательное оружие; при 5+ Успехах можно отбить гранату обратно."
+  },
+
+  hardTarget: {
+    "key": "hardTarget",
+    "name": "Hard Target",
+    "tier": 2,
+    "patronage": "slaanesh",
+    "prerequisites": "A 50",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 50,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "После Верховой Атаки, Натиска или Бега стрельба по персонажу получает −10 до начала его следующего Хода."
+  },
+
+  meatShield: {
+    "key": "meatShield",
+    "name": "Meat Shield",
+    "tier": 2,
+    "patronage": "khorne",
+    "prerequisites": "WS 30, Athletics +20",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 30,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "athletics",
+        "value": 20,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Перенаправляет попадания по персонажу с арки 180° со стороны удерживаемой в Захвате жертвы в эту жертву."
+  },
+
+  salto: {
+    "key": "salto",
+    "name": "Salto",
+    "tier": 2,
+    "patronage": "slaanesh",
+    "prerequisites": "P 40, Acrobatics +10",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "perception",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "acrobatics",
+        "value": 10,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Увеличивает дистанцию отскока в Раунд на P.b м; раз в Ход позволяет без Реакции уклониться от пересекаемого шаблона Linger."
+  },
+
+  slipAway: {
+    "key": "slipAway",
+    "name": "Slip Away",
+    "tier": 2,
+    "patronage": "slaanesh",
+    "prerequisites": "A 40",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 40,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Раз в Раунд даёт +30 до броска или переброс для Уклонения от Захвата либо теста А в Борьбе; позволяет игнорировать авто-ничью от Unnatural Characteristic в соответствующих встречных тестах А."
+  },
+
+  speedAwareness: {
+    "key": "speedAwareness",
+    "name": "Speed Awareness",
+    "tier": 2,
+    "patronage": "slaanesh",
+    "prerequisites": "Acrobatics +20, Awareness +20",
+    "requirements": [
+      {
+        "type": "skill",
+        "key": "acrobatics",
+        "value": 20,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "awareness",
+        "value": 20,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Разрешает Избегания после Бега со штрафом −5 за каждые полные P.b пробежанных метров."
+  },
+
+  adrenalineRush: {
+    "key": "adrenalineRush",
+    "name": "Adrenaline Rush",
+    "tier": 3,
+    "patronage": "undivided",
+    "prerequisites": "T 40, A 40, P 40",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "toughness",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "characteristic",
+        "key": "perception",
+        "value": 40,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Раз за бой или сцену позволяет потратить Очко Бесчестия, чтобы восстановить потраченные Реакции и дистанцию отскока."
+  },
+
+  bladeShield: {
+    "key": "bladeShield",
+    "name": "Blade Shield",
+    "tier": 3,
+    "patronage": "slaanesh",
+    "prerequisites": "P 50, Parry +20, Deflect Shot",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "perception",
+        "value": 50,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "parry",
+        "value": 20,
+        "specialization": ""
+      },
+      {
+        "type": "talent",
+        "key": "deflectShot",
+        "value": 0,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Позволяет парировать стрельбу оружием с Балансом 1+, отменяя одно попадание; при Pen 6+ стрелковое оружие считается имеющим Power Field для парирования."
+  },
+
+  bulwark: {
+    "key": "bulwark",
+    "name": "Bulwark",
+    "tier": 3,
+    "patronage": "undivided",
+    "prerequisites": "S 50, Parry +20",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "strength",
+        "value": 50,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "parry",
+        "value": 20,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Разрешает переброс Парирования щитом, считает его Баланс равным 1 для других Талантов и облегчает движение с каплевидными и башенными щитами."
+  },
+
+  snapshot: {
+    "key": "snapshot",
+    "name": "Snapshot",
+    "tier": 3,
+    "patronage": "tzeentch",
+    "prerequisites": "BS 50, P 50, Trick Shooter",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "ballisticSkill",
+        "value": 50,
+        "specialization": ""
+      },
+      {
+        "type": "characteristic",
+        "key": "perception",
+        "value": 50,
+        "specialization": ""
+      },
+      {
+        "type": "talent",
+        "key": "trickShooter",
+        "value": 0,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "При движении не дальше полудвижения даёт в конце Хода 1 ОД как Задержкой только для выстрела по брошенному предмету, игнорируя обычное ограничение атак Задержкой."
+  },
+
+  stepAside: {
+    "key": "stepAside",
+    "name": "Step Aside",
+    "tier": 3,
+    "patronage": "undivided",
+    "prerequisites": "A 40, Dodge +0, Parry +0",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "dodge",
+        "value": 0,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "parry",
+        "value": 0,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Даёт 1 дополнительную Реакцию, которую можно потратить только на Избегание."
+  },
+
+  // Зависимости: Disarm — Core, стр. 71; Trick Shooter — стр. 80.
+  disarm: {
+    "key": "disarm",
+    "name": "Disarm",
+    "tier": 1,
+    "patronage": "undivided",
+    "prerequisites": "A 30",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 30,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Открывает приём Обезоружить: встречный тест WS позволяет выбить оружие, а при 5+ Успехах — выбить второе или забрать первое; интегрированное оружие не выбивается."
+  },
+
+  trickShooter: {
+    "key": "trickShooter",
+    "name": "Trick Shooter",
+    "tier": 1,
+    "patronage": "tzeentch",
+    "prerequisites": "BS 45",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "ballisticSkill",
+        "value": 45,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Уменьшает на 30 штрафы за атаки по необычным целям, которые не наносят прямого урона персонажам, например по летящей гранате."
   }
 };
 
