@@ -53,10 +53,8 @@ function findSkill(
   key,
   specialization = ""
 ) {
-  const wantedSpecialization =
-    String(
-      specialization ?? ""
-    )
+  const wanted =
+    String(specialization ?? "")
       .trim()
       .toLowerCase();
 
@@ -72,17 +70,14 @@ function findSkill(
       return false;
     }
 
-    const itemSpecialization =
+    const current =
       String(
         item.system.specialization ?? ""
       )
         .trim()
         .toLowerCase();
 
-    return (
-      itemSpecialization ===
-      wantedSpecialization
-    );
+    return current === wanted;
   }) ?? null;
 }
 
@@ -91,10 +86,8 @@ function findTalent(
   key,
   specialization = ""
 ) {
-  const wantedSpecialization =
-    String(
-      specialization ?? ""
-    )
+  const wanted =
+    String(specialization ?? "")
       .trim()
       .toLowerCase();
 
@@ -110,17 +103,14 @@ function findTalent(
       return false;
     }
 
-    const itemSpecialization =
+    const current =
       String(
         item.system.specialization ?? ""
       )
         .trim()
         .toLowerCase();
 
-    return (
-      itemSpecialization ===
-      wantedSpecialization
-    );
+    return current === wanted;
   }) ?? null;
 }
 
@@ -145,7 +135,6 @@ function checkCharacteristicRequirement(
   return {
     type: "characteristic",
     key: requirement.key,
-
     required,
     current,
 
@@ -193,7 +182,6 @@ function checkSkillRequirement(
     type: "skill",
     key: requirement.key,
     specialization,
-
     required,
     current,
 
@@ -209,25 +197,25 @@ function checkTalentRequirement(
   actor,
   requirement
 ) {
-  const talent =
-    findTalent(
-      actor,
-      requirement.key,
-      requirement.specialization
-    );
-
   const specialization =
     String(
       requirement.specialization ?? ""
     ).trim();
 
-  const requiredDefinition =
+  const talent =
+    findTalent(
+      actor,
+      requirement.key,
+      specialization
+    );
+
+  const definition =
     getTalentDefinition(
       requirement.key
     );
 
   const baseName =
-    requiredDefinition?.name ??
+    definition?.name ??
     requirement.key;
 
   const label =
@@ -239,13 +227,50 @@ function checkTalentRequirement(
     type: "talent",
     key: requirement.key,
     specialization,
-
     required: true,
     current: Boolean(talent),
-
     met: Boolean(talent),
-
     label
+  };
+}
+
+function checkAnyOfRequirement(
+  actor,
+  requirement
+) {
+  const options =
+    Array.from(
+      requirement.anyOf ?? []
+    ).map(
+      option =>
+        checkRequirement(
+          actor,
+          option
+        )
+    );
+
+  return {
+    type: "anyOf",
+    key: "",
+    required: true,
+    current:
+      options.some(
+        option => option.met
+      ),
+
+    met:
+      options.some(
+        option => option.met
+      ),
+
+    options,
+
+    label:
+      options
+        .map(
+          option => option.label
+        )
+        .join(" ИЛИ ")
   };
 }
 
@@ -272,6 +297,12 @@ function checkRequirement(
         requirement
       );
 
+    case "anyOf":
+      return checkAnyOfRequirement(
+        actor,
+        requirement
+      );
+
     default:
       return {
         type:
@@ -288,7 +319,6 @@ function checkRequirement(
           requirement.value ?? null,
 
         current: null,
-
         met: false,
 
         label:

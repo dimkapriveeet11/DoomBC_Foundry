@@ -6,7 +6,7 @@ const {
   StringField
 } = foundry.data.fields;
 
-function requirementField() {
+function simpleRequirementField() {
   return new SchemaField({
     type: new StringField({
       required: true,
@@ -32,6 +32,44 @@ function requirementField() {
       nullable: false,
       initial: ""
     })
+  });
+}
+
+function requirementField() {
+  return new SchemaField({
+    type: new StringField({
+      required: true,
+      nullable: false,
+      initial: ""
+    }),
+
+    key: new StringField({
+      required: true,
+      nullable: false,
+      initial: ""
+    }),
+
+    value: new NumberField({
+      required: true,
+      nullable: false,
+      integer: true,
+      initial: 0
+    }),
+
+    specialization: new StringField({
+      required: true,
+      nullable: false,
+      initial: ""
+    }),
+
+    anyOf: new ArrayField(
+      simpleRequirementField(),
+      {
+        required: true,
+        nullable: false,
+        initial: []
+      }
+    )
   });
 }
 
@@ -81,6 +119,19 @@ export class DoomBCTalentData
         nullable: false,
         initial: ""
       }),
+
+      specializations: new ArrayField(
+        new StringField({
+          required: true,
+          nullable: false,
+          initial: ""
+        }),
+        {
+          required: true,
+          nullable: false,
+          initial: []
+        }
+      ),
 
       repeatable: new BooleanField({
         required: true,

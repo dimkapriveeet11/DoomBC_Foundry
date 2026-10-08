@@ -47,6 +47,47 @@ function normalizeSpecialization(
   ).trim();
 }
 
+function validateSpecialization(
+  definition,
+  specialization
+) {
+  const allowed =
+    Array.from(
+      definition.specializations ?? []
+    );
+
+  if (allowed.length === 0) {
+    if (specialization) {
+      throw new Error(
+        `DoomBC | Талант "${definition.name}" не использует специализацию.`
+      );
+    }
+
+    return "";
+  }
+
+  if (!specialization) {
+    throw new Error(
+      `DoomBC | Для Таланта "${definition.name}" необходимо выбрать специализацию: ${allowed.join(", ")}.`
+    );
+  }
+
+  const matched =
+    allowed.find(
+      option =>
+        option.toLowerCase() ===
+        specialization.toLowerCase()
+    );
+
+  if (!matched) {
+    throw new Error(
+      `DoomBC | Недопустимая специализация "${specialization}" для Таланта "${definition.name}". Допустимо: ${allowed.join(", ")}.`
+    );
+  }
+
+  return matched;
+}
+
 function copyPurchase(
   purchase
 ) {
@@ -125,9 +166,15 @@ export async function purchaseTalent(
     );
   }
 
-  const spec =
+  const requestedSpec =
     normalizeSpecialization(
       specialization
+    );
+
+  const spec =
+    validateSpecialization(
+      definition,
+      requestedSpec
     );
 
   if (
@@ -235,6 +282,9 @@ export async function purchaseTalent(
             specialization:
               spec,
 
+            specializations:
+              definition.specializations ?? [],
+
             repeatable:
               definition.repeatable,
 
@@ -262,24 +312,17 @@ export async function purchaseTalent(
     talent,
     key,
     specialization: spec,
-
     tier:
       definition.tier,
-
     patronage:
       definition.patronage,
-
     relation:
       details.relation,
-
     cost,
-
     prerequisites:
       prerequisiteResult,
-
     availableBefore:
       available,
-
     availableAfter:
       available - cost
   };
