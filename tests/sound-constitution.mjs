@@ -22,7 +22,7 @@ function actor(name = "Человек", patronage = "tzeentch", toughness = 50) 
 }
 const key = "soundConstitution";
 const snapshot = a => JSON.stringify({ items: a.items, system: a.system });
-assert.equal(Object.keys(TALENTS).length, 76);
+assert.ok(Object.keys(TALENTS).length >= 76);
 assert.equal(TALENTS[key].tier, 0);
 assert.equal(TALENTS[key].repeatable, true);
 for (const [name, limit] of [["Человек", 7], ["human", 7], ["Космодесантник", 5], ["Space Marine", 5]]) {

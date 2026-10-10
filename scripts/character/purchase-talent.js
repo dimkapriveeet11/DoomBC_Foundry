@@ -1,3 +1,4 @@
+import { getToleranceLimitDetails } from "./tolerance.js";
 import { getSoundConstitutionDetails } from "./sound-constitution.js";
 
 import { logger } from "../core/logger.js";
@@ -155,7 +156,9 @@ export function getTalentPurchaseDetails(actor, talentKey) {
   const definition = getTalentDefinition(talentKey);
   if (!definition) throw new Error(`DoomBC | Неизвестный Талант: ${talentKey}`);
   if (definition.key === "soundConstitution") return getSoundConstitutionDetails(actor);
-  return getAdvancementCostDetails(actor, "talent", definition.tier, definition.patronage);
+  const details = getAdvancementCostDetails(actor, "talent", definition.tier, definition.patronage);
+  if (definition.key === "tolerance") return { ...details, ...getToleranceLimitDetails(actor) };
+  return details;
 }
 
 // Prevent overlapping purchases on the same local Actor from bypassing the cap
@@ -228,8 +231,8 @@ async function performTalentPurchase(
     );
 
   const details = getTalentPurchaseDetails(actor, key);
-  if (key === "soundConstitution" && details.remaining === 0) {
-    throw new Error(`DoomBC | Достигнут лимит Sound Constitution: ${details.purchased}/${details.limit}.`);
+  if (["soundConstitution", "tolerance"].includes(key) && details.remaining === 0) {
+    throw new Error(`DoomBC | Достигнут лимит ${definition.name}: ${details.purchased}/${details.limit}.`);
   }
 
   const cost =

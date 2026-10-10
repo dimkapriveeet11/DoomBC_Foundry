@@ -1,4 +1,456 @@
 export const TALENTS = {
+  // Медик — Core, стр. 69–70. Placebo follows p. 70 by user choice.
+  butAScratch: {
+    "key": "butAScratch",
+    "name": "But a Scratch",
+    "tier": 1,
+    "patronage": "nurgle",
+    "prerequisites": "Medicae +10",
+    "requirements": [
+      {
+        "type": "skill",
+        "key": "medicae",
+        "value": 10,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Автоматически проходит тесты Первой Помощи легко раненным персонажам."
+  },
+  butcher: {
+    "key": "butcher",
+    "name": "Butcher",
+    "tier": 1,
+    "patronage": "nurgle",
+    "prerequisites": "Medicae +0, WS 35",
+    "requirements": [
+      {
+        "type": "skill",
+        "key": "medicae",
+        "value": 0,
+        "specialization": ""
+      },
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 35,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Автоматически проходит тесты лечения бесполезных конечностей и ампутации Нартецием. Его Нартеций получает Extreme (9) и Precise; непоглощённый урон в сочленения вызывает Кровотечение."
+  },
+  deepDetox: {
+    "key": "deepDetox",
+    "name": "Deep Detox",
+    "tier": 1,
+    "patronage": "slaanesh",
+    "prerequisites": "Trade (Chymist) +0",
+    "requirements": [
+      {
+        "type": "skill",
+        "key": "trade",
+        "value": 0,
+        "specialization": "Chymist"
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Из 2 доз Детокса и 1 дозы Стимма тестом Trade (Chymist)+0 готовит дозу против пост-эффекта определённого наркотика. Инъекция прекращает пост-эффект и Оглушает на 1d5+1 минус Успехи создания дозы минут."
+  },
+  fieldSurgeon: {
+    "key": "fieldSurgeon",
+    "name": "Field Surgeon",
+    "tier": 1,
+    "patronage": "nurgle",
+    "prerequisites": "Medicae +10",
+    "requirements": [
+      {
+        "type": "skill",
+        "key": "medicae",
+        "value": 10,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Позволяет проводить в поле тесты Medicae, обычно требующие полноценной госпитализации, со штрафом –20."
+  },
+  tolerance: {
+    "key": "tolerance",
+    "name": "Tolerance",
+    "tier": 1,
+    "patronage": "slaanesh",
+    "prerequisites": "P 40, Trade (Chymist) +0",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "perception",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "trade",
+        "value": 0,
+        "specialization": "Chymist"
+      }
+    ],
+    "specialization": "",
+    "repeatable": true,
+    "description": "Каждая покупка увеличивает на 1 минимальное опасное количество применений наркотиков в неделю. Можно приобрести до P.b раз."
+  },
+  antivenom: {
+    "key": "antivenom",
+    "name": "Antivenom",
+    "tier": 2,
+    "patronage": "nurgle",
+    "prerequisites": "Scholastic Lore (Chymistry) +10",
+    "requirements": [
+      {
+        "type": "skill",
+        "key": "scholasticLore",
+        "value": 10,
+        "specialization": "Chymistry"
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "За полудействие, 3 дозы Детокса и 1 Очко Бесчестия тестом Scholastic Lore (Chymistry)(I)+0 создаёт Успехи доз противоядия от известного яда. Для неизвестного нужен образец либо обследование пострадавшего за полное действие тестом Medicae(P)–20. Инъекция прекращает действие яда и даёт иммунитет к нему на 24 часа."
+  },
+  cook: {
+    "key": "cook",
+    "name": "Cook",
+    "tier": 2,
+    "patronage": "slaanesh",
+    "prerequisites": "Medicae +20, Trade (Chymist) +0",
+    "requirements": [
+      {
+        "type": "skill",
+        "key": "medicae",
+        "value": 20,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "trade",
+        "value": 0,
+        "specialization": "Chymist"
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Имея разнообразные химикаты, за 5 минут и 1 Очко Бесчестия готовит I.b смесей, утоляющих зависимость как приём определённого наркотика."
+  },
+  fastStitches: {
+    "key": "fastStitches",
+    "name": "Fast Stitches",
+    "tier": 2,
+    "patronage": "nurgle",
+    "prerequisites": "A 40, Medicae +20",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "medicae",
+        "value": 20,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Оказывает Первую Помощь за полное действие, считая I.b вдвое ниже с округлением вверх. Нартеций при применении на десантнике сокращает время до полудействия."
+  },
+  frontlineMedic: {
+    "key": "frontlineMedic",
+    "name": "Frontline Medic",
+    "tier": 2,
+    "patronage": "nurgle",
+    "prerequisites": "Athletics +10, Medicae +10",
+    "requirements": [
+      {
+        "type": "skill",
+        "key": "athletics",
+        "value": 10,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "medicae",
+        "value": 10,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "За полное действие перемещается к союзнику на дистанцию Натиска и оказывает одну помощь: остановить Кровотечение (Medicae–10 либо без теста с Good.Q аптечкой/Нартецием); снять Crippling/Piercing (Medicae+0, Нартеций); потушить цель (A+20); ввести Химию (инъектор/Нартеций); применить Fast Stitches (нужны этот Талант и Нартеций); либо нести Оглушённую/Беспомощную цель при свободной руке и достаточном весе подъёма, убрав бонусы атак по ней от этих состояний и Избегая за неё, пока она не может защититься. После прекращения состояния может автоматически поставить цель на ноги."
+  },
+  hookUp: {
+    "key": "hookUp",
+    "name": "Hook Up",
+    "tier": 2,
+    "patronage": "slaanesh",
+    "prerequisites": "I 45, Trade (Chymist) +20",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "intelligence",
+        "value": 45,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "trade",
+        "value": 20,
+        "specialization": "Chymist"
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "При штрафе –30 к крафту наркотика вдвое уменьшает его минимальное опасное количество применений в неделю (округление вниз) и заставляет перебрасывать вызванные им тесты на зависимость."
+  },
+  poisoner: {
+    "key": "poisoner",
+    "name": "Poisoner",
+    "tier": 2,
+    "patronage": "nurgle",
+    "prerequisites": "Medicae +10, Trade (Chymist) +20",
+    "requirements": [
+      {
+        "type": "skill",
+        "key": "medicae",
+        "value": 10,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "trade",
+        "value": 20,
+        "specialization": "Chymist"
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "При Избирательном попадании оружием с Toxic или другим ядом цель перебрасывает успешные тесты против яда; урон от яда можно бросить дважды и выбрать лучший."
+  },
+  placebo: {
+    "key": "placebo",
+    "name": "Placebo",
+    "tier": 2,
+    "patronage": "tzeentch",
+    "prerequisites": "Deceive +10, Medicae +20",
+    "requirements": [
+      {
+        "type": "skill",
+        "key": "deceive",
+        "value": 10,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "medicae",
+        "value": 20,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "За полудействие имитирует лечение другого персонажа и проходит комбинированный тест Deceive(I)+0 и Medicae(I)–10. При успехе цель игнорирует эффекты Усталости, урона Характеристикам и уже полученных Критических Эффектов на Успехи Раундов, не более раза за сцену или бой на каждую цель."
+  },
+  radicalTreatment: {
+    "key": "radicalTreatment",
+    "name": "Radical Treatment",
+    "tier": 2,
+    "patronage": "undivided",
+    "prerequisites": "I 40, Medicae +10",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "intelligence",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "medicae",
+        "value": 10,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Может дать тесту Первой Помощи дополнительный штраф –10/–20/–30, чтобы при успехе восстановить дополнительно 1/2/3 Раны соответственно."
+  },
+  restitching: {
+    "key": "restitching",
+    "name": "Restitching",
+    "tier": 2,
+    "patronage": "nurgle",
+    "prerequisites": "Awareness +10, Medicae +20",
+    "requirements": [
+      {
+        "type": "skill",
+        "key": "awareness",
+        "value": 10,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "medicae",
+        "value": 20,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Может повторить неудачную Первую Помощь, если с прошлой попытки прошло не более I.b минут; предыдущую попытку мог проводить другой персонаж."
+  },
+  torturer: {
+    "key": "torturer",
+    "name": "Torturer",
+    "tier": 2,
+    "patronage": "slaanesh",
+    "prerequisites": "Medicae +20",
+    "requirements": [
+      {
+        "type": "skill",
+        "key": "medicae",
+        "value": 20,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "При проведении пыток или помощи в них тестом Medicae–10 даёт жертве штраф –3×Успехи на встречные тесты. Неудачный тест пыток при этом не наносит жертве урон и не делает её непригодной для дальнейших пыток."
+  },
+  triage: {
+    "key": "triage",
+    "name": "Triage",
+    "tier": 2,
+    "patronage": "nurgle",
+    "prerequisites": "I 35, Medicae +10",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "intelligence",
+        "value": 35,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "medicae",
+        "value": 10,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Может оказывать медицинский уход до 10×I.b пациентам за 8-часовую смену."
+  },
+  councilium: {
+    "key": "councilium",
+    "name": "Councilium",
+    "tier": 3,
+    "patronage": "undivided",
+    "prerequisites": "Logic +20, Medicae +20",
+    "requirements": [
+      {
+        "type": "skill",
+        "key": "logic",
+        "value": 20,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "medicae",
+        "value": 20,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Удваивает максимум ассистентов для тестов лечения (до 4 для Первой Помощи). Пациенты восстанавливают дополнительно 2 Раны за каждого ассистента от Первой Помощи и любого другого лечения."
+  },
+  masterChirurgeon: {
+    "key": "masterChirurgeon",
+    "name": "Master Chirurgeon",
+    "tier": 3,
+    "patronage": "nurgle",
+    "prerequisites": "I 40, Medicae +20",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "intelligence",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "medicae",
+        "value": 20,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Получает +10 на тесты Medicae для лечения; пациенты восстанавливают дополнительно 2 Раны от его Первой Помощи и любого другого лечения."
+  },
+  reanimate: {
+    "key": "reanimate",
+    "name": "Reanimate",
+    "tier": 3,
+    "patronage": "nurgle",
+    "prerequisites": "Cor 30, Medicae +30",
+    "requirements": [
+      {
+        "type": "resource",
+        "key": "corruption",
+        "value": 30,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "medicae",
+        "value": 30,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Раз за сцену или бой за полное действие и 1 Очко Бесчестия возвращает к жизни труп на расстоянии касания: Раны становятся 0, Оглушение на 1 Раунд. Смерть должна наступить не более Cor.b персонажа Раундов назад. Не действует при полностью уничтоженной голове, смерти от варп-оружия или Выжигания Души."
+  },
+  surgicalPrecision: {
+    "key": "surgicalPrecision",
+    "name": "Surgical Precision",
+    "tier": 3,
+    "patronage": "tzeentch",
+    "prerequisites": "P 45, Medicae +10",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "perception",
+        "value": 45,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "medicae",
+        "value": 10,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Перед уроном одиночной Избирательной атаки по биологической цели тест Medicae–10 даёт +1 Dmg за каждый нечётный Успех. Вместо убийства можно парализовать цель. Против Астартес требуется комбинированный тест с Forbidden Lore (Astartes Implants)–10, против ксеносов — Forbidden Lore (Xenobiology)–10, против зверей — Scholastic Lore (Beasts)–10."
+  },
+
   soundConstitution: {
     key: "soundConstitution",
     name: "Sound Constitution",
