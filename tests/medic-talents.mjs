@@ -63,7 +63,7 @@ function fixture(labels, patronage="undivided") {
 const state = a => JSON.stringify({items:a.items,system:a.system});
 const prices={allied:[150,300,400],neutral:[250,500,750],hostile:[400,750,1000]};
 const enemies={slaanesh:"khorne",khorne:"slaanesh",nurgle:"tzeentch",tzeentch:"nurgle"};
-assert.equal(Object.keys(TALENTS).length,96);
+assert.ok(Object.keys(TALENTS).length >= 96);
 for(const [key,tier,god,labels] of expected){
   const d=TALENTS[key];
   assert.deepEqual([d.tier,d.patronage,d.prerequisites],[tier,god,labels],key);

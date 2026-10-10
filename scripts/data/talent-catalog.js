@@ -1,4 +1,629 @@
 export const TALENTS = {
+  // Рукопашные — Core, стр. 71–73; Two Weapon Wielder — стр. 85.
+  doubleTeam: {
+    "key": "doubleTeam",
+    "name": "Double Team",
+    "tier": 1,
+    "patronage": "undivided",
+    "prerequisites": "",
+    "requirements": [],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Ещё +10 на попадание в ближнем бою при численном превосходстве 2 к 1 или выше."
+  },
+  everythingAWeapon: {
+    "key": "everythingAWeapon",
+    "name": "Everything a Weapon",
+    "tier": 1,
+    "patronage": "khorne",
+    "prerequisites": "WS 45, P 45",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 45,
+        "specialization": ""
+      },
+      {
+        "type": "characteristic",
+        "key": "perception",
+        "value": 45,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Нет штрафа на попадание импровизированным оружием, включая стрелковое в рукопашной. При Избирательной атаке не в торс такое оружие теряет Primitive."
+  },
+  fleshRender: {
+    "key": "fleshRender",
+    "name": "Flesh Render",
+    "tier": 1,
+    "patronage": "khorne",
+    "prerequisites": "",
+    "requirements": [],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Для рукопашного оружия с Tearing бросает два дополнительных кубика урона вместо одного и отбрасывает два наименьших."
+  },
+  raptor: {
+    "key": "raptor",
+    "name": "Raptor",
+    "tier": 1,
+    "patronage": "undivided",
+    "prerequisites": "Operate (Aeronautica) +0",
+    "requirements": [
+      {
+        "type": "skill",
+        "key": "operateAeronautica",
+        "value": 0,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "При Натиске в полёте наносит +1d10 Dmg при 2+ Успехах попадания и ещё +1d10 при 4+ Успехах."
+  },
+  reaper: {
+    "key": "reaper",
+    "name": "Reaper",
+    "tier": 1,
+    "patronage": "undivided",
+    "prerequisites": "A 50",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 50,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "После убийства цели Натиском, если остались атаки, может продолжить движение к следующей цели и атаковать. Пределы: полная дистанция Натиска и не более Полудвижения (SPD) от первой цели."
+  },
+  savior: {
+    "key": "savior",
+    "name": "Savior",
+    "tier": 1,
+    "patronage": "undivided",
+    "prerequisites": "WS 40, A 40",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 40,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "В базовом контакте одновременно с союзником и врагом может потратить Реакцию и немедленно провести Давление против врага без траты действий, даже посреди другого действия."
+  },
+  steadyFootwork: {
+    "key": "steadyFootwork",
+    "name": "Steady Footwork",
+    "tier": 1,
+    "patronage": "nurgle",
+    "prerequisites": "WS 35",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 35,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Не получает штрафов к WS от Трудного ландшафта."
+  },
+  stockGrip: {
+    "key": "stockGrip",
+    "name": "Stock Grip",
+    "tier": 1,
+    "patronage": "nurgle",
+    "prerequisites": "",
+    "requirements": [],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Может использовать штыки одноручным хватом со штрафом –10 на все тесты WS с ними вместо обычного –5."
+  },
+  sureStrike: {
+    "key": "sureStrike",
+    "name": "Sure Strike",
+    "tier": 1,
+    "patronage": "slaanesh",
+    "prerequisites": "WS 30",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 30,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Уменьшает на 10 штрафы рукопашных атак за Избирательную атаку или Размер цели ниже 0."
+  },
+  takedown: {
+    "key": "takedown",
+    "name": "Takedown",
+    "tier": 1,
+    "patronage": "undivided",
+    "prerequisites": "",
+    "requirements": [],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Может выполнять приём Оглушить любым оружием и не-Избирательной атакой. При успешном Оглушении может также сбить цель с ног."
+  },
+  bayonetCharge: {
+    "key": "bayonetCharge",
+    "name": "Bayonet Charge",
+    "tier": 2,
+    "patronage": "nurgle",
+    "prerequisites": "WS 35",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 35,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Приём для штыка, база любая: рукопашная атака с –10; при попадании свободным действием выстрел из оружия по тому же противнику с +30 за выстрел в упор, несмотря на ближний бой."
+  },
+  bladeBinding: {
+    "key": "bladeBinding",
+    "name": "Blade Binding",
+    "tier": 2,
+    "patronage": "khorne",
+    "prerequisites": "WS 50, S 50",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 50,
+        "specialization": ""
+      },
+      {
+        "type": "characteristic",
+        "key": "strength",
+        "value": 50,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Когда противник парирует атаку персонажа, победа в S+0 vs S+0 сцепляет их оружия. Ими нельзя атаковать или парировать до начала следующего Хода персонажа либо выхода из рукопашной. Не действует против парирования щитом."
+  },
+  cleave: {
+    "key": "cleave",
+    "name": "Cleave",
+    "tier": 2,
+    "patronage": "khorne",
+    "prerequisites": "WS 45, S 40",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 45,
+        "specialization": ""
+      },
+      {
+        "type": "characteristic",
+        "key": "strength",
+        "value": 40,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Если рукопашная атака нанесла 16+ непоглощённого урона и вывела цель из строя, может свободным действием провести базовую атаку с –10 по другому персонажу рядом с первой целью. Эта атака не порождает новые атаки Cleave."
+  },
+  counterAttack: {
+    "key": "counterAttack",
+    "name": "Counter Attack",
+    "tier": 2,
+    "patronage": "undivided",
+    "prerequisites": "WS 40",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 40,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Раз в Раунд после успешного Парирования может немедленно провести базовую атаку тем же оружием с –10 по противнику без траты Реакций или действий."
+  },
+  cripplingStrike: {
+    "key": "cripplingStrike",
+    "name": "Crippling Strike",
+    "tier": 2,
+    "patronage": "slaanesh",
+    "prerequisites": "WS 50",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 50,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Когда рукопашная атака наносит Отрицательные Раны, она получает +2 Dmg."
+  },
+  falseAdvance: {
+    "key": "falseAdvance",
+    "name": "False Advance",
+    "tier": 2,
+    "patronage": "tzeentch",
+    "prerequisites": "WS 50, A 50",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 50,
+        "specialization": ""
+      },
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 50,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Завершив Полудвижение или Полное движение в контакте с врагом, может провести один Финт или Давление против него свободным действием."
+  },
+  gatekeeper: {
+    "key": "gatekeeper",
+    "name": "Gatekeeper",
+    "tier": 2,
+    "patronage": "undivided",
+    "prerequisites": "WS 40, P 35, A 35",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "characteristic",
+        "key": "perception",
+        "value": 35,
+        "specialization": ""
+      },
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 35,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Может совершать до WS.b свободных атак в Раунд вместо одной."
+  },
+  grind: {
+    "key": "grind",
+    "name": "Grind",
+    "tier": 2,
+    "patronage": "khorne",
+    "prerequisites": "Athletics +10",
+    "requirements": [
+      {
+        "type": "skill",
+        "key": "athletics",
+        "value": 10,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Приём Пила против противника, удерживаемого в Борьбе, использует полный S.b для урона вместо половины."
+  },
+  preciseBlow: {
+    "key": "preciseBlow",
+    "name": "Precise Blow",
+    "tier": 2,
+    "patronage": "slaanesh",
+    "prerequisites": "WS 40, Sure Strike",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "talent",
+        "key": "sureStrike",
+        "value": 0,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Уменьшает на 10 штрафы рукопашных атак за Избирательную атаку или Размер цели ниже 0."
+  },
+  riposte: {
+    "key": "riposte",
+    "name": "Riposte",
+    "tier": 2,
+    "patronage": "slaanesh",
+    "prerequisites": "Counter Attack, Two Weapon Wielder (Melee)",
+    "requirements": [
+      {
+        "type": "talent",
+        "key": "counterAttack",
+        "value": 0,
+        "specialization": ""
+      },
+      {
+        "type": "talent",
+        "key": "twoWeaponWielder",
+        "value": 0,
+        "specialization": "Melee"
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Раз в Раунд при двух оружиях после успешного Парирования может без действий и Реакций провести базовую контратаку другим оружием с +0, если его Баланс не ниже 0; Избегание этой атаки получает –20. Two Weapon Wielder (Ranged) позволяет использовать для рипоста пистолеты, но не винтовки."
+  },
+  strangeTechnique: {
+    "key": "strangeTechnique",
+    "name": "Strange Technique",
+    "tier": 2,
+    "patronage": "undivided",
+    "prerequisites": "A 40, I 35",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "characteristic",
+        "key": "intelligence",
+        "value": 35,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Дополнительная Реакция только для атак: например, хвостом, мехадендритами или бонусных приёмов Повалить от крюка/посоха. Нельзя тратить на бонусные атаки Furious Assault."
+  },
+  swiftAttack: {
+    "key": "swiftAttack",
+    "name": "Swift Attack",
+    "tier": 2,
+    "patronage": "khorne",
+    "prerequisites": "WS 30",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 30,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Приём на базе Стандартной или Осторожной Атаки оружием с Балансом не ниже –1: атака с –10, одно попадание за каждый нечётный Успех до WS.b. При нескольких рукопашных оружиях применяется только одним в Ход. Не активирует Cleave и Whirlwind of Death."
+  },
+  tenacity: {
+    "key": "tenacity",
+    "name": "Tenacity",
+    "tier": 2,
+    "patronage": "nurgle",
+    "prerequisites": "P 40",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "perception",
+        "value": 40,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Если единственная одиночная рукопашная атака в Ход не нанесла урона по любой причине, может немедленно повторить её по той же цели с той же базой и приёмом."
+  },
+  whirlwindOfDeath: {
+    "key": "whirlwindOfDeath",
+    "name": "Whirlwind of Death",
+    "tier": 2,
+    "patronage": "khorne",
+    "prerequisites": "WS 40",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 40,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Рукопашные атаки по Ордам наносят дополнительно половину WS.b (округление вверх) урона в Магнитуду."
+  },
+  assassinStrike: {
+    "key": "assassinStrike",
+    "name": "Assassin Strike",
+    "tier": 3,
+    "patronage": "slaanesh",
+    "prerequisites": "A 40, Acrobatics +0",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "acrobatics",
+        "value": 0,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Раз в Раунд после любой рукопашной атаки тест Acrobatics+0 позволяет совершить Полудвижение свободным действием, не вызывая свободные атаки при выходе из рукопашной."
+  },
+  blademaster: {
+    "key": "blademaster",
+    "name": "Blademaster",
+    "tier": 3,
+    "patronage": "khorne",
+    "prerequisites": "WS 40",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 40,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Раз в Раунд может перебросить один неудачный тест атаки клинковым рукопашным оружием."
+  },
+  crushingBlow: {
+    "key": "crushingBlow",
+    "name": "Crushing Blow",
+    "tier": 3,
+    "patronage": "khorne",
+    "prerequisites": "WS 40",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 40,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Добавляет половину WS.b (округление вверх) ко всему своему рукопашному урону."
+  },
+  hamstring: {
+    "key": "hamstring",
+    "name": "Hamstring",
+    "tier": 3,
+    "patronage": "slaanesh",
+    "prerequisites": "WS 50, A 50",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 50,
+        "specialization": ""
+      },
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 50,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Раз в Ход после непоглощённого урона Избирательной рукопашной атакой в ногу может через A+0 vs A+0 сбить цель с ног; победа на 5+ Успехов также лишает её полудействия в следующий Ход. Не работает с приёмами Swift Attack и Lightning Attack."
+  },
+  lightningAttack: {
+    "key": "lightningAttack",
+    "name": "Lightning Attack",
+    "tier": 3,
+    "patronage": "khorne",
+    "prerequisites": "Swift Attack",
+    "requirements": [
+      {
+        "type": "talent",
+        "key": "swiftAttack",
+        "value": 0,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Приём на базе Стандартной или Осторожной Атаки оружием с Балансом не ниже 0: атака с –20, одно попадание за каждый Успех до WS.b. При нескольких оружиях этот приём или Swift Attack применяется только одним в Ход. Не активирует Cleave и Whirlwind of Death."
+  },
+  reverseStrike: {
+    "key": "reverseStrike",
+    "name": "Reverse Strike",
+    "tier": 3,
+    "patronage": "slaanesh",
+    "prerequisites": "WS 45",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 45,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Приём на базе Стандартной, Осторожной Атаки или Натиска оружием с профилем посоха в хвате обеими руками. Атака с +0 любым профилем, затем ещё одна с теми же модификаторами профилем посоха; вторая получает Concussive (0), если нет более высокого рейтинга."
+  },
+  showOff: {
+    "key": "showOff",
+    "name": "Show-Off",
+    "tier": 3,
+    "patronage": "slaanesh",
+    "prerequisites": "WS 50, F 40",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 50,
+        "specialization": ""
+      },
+      {
+        "type": "characteristic",
+        "key": "fellowship",
+        "value": 40,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Полудействие: один бросок WS+0 vs WS+0 против до F.b целей в базовом контакте. Побеждённые теряют преимущества Командования и не получают новых до следующего Хода персонажа. По каждой цели, побеждённой на 5+ Успехов, немедленно проводит одну базовую рукопашную атаку. Действие не считается атакой, оставляя второе полудействие для атакующего приёма."
+  },
+  twoWeaponWielder: {
+    "key": "twoWeaponWielder",
+    "name": "Two Weapon Wielder",
+    "tier": 2,
+    "patronage": "undivided",
+    "prerequisites": "",
+    "requirements": [],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Специализации Melee и Ranged. Позволяет атаковать обеими руками как одну атаку длительностью наибольшего из двух действий, со штрафом –20. Для сочетания стрелкового и рукопашного оружия нужны обе специализации. Разные цели должны быть не дальше 10 м друг от друга.",
+    "specializations": [
+      "Melee",
+      "Ranged"
+    ]
+  },
+
   // Медик — Core, стр. 69–70. Placebo follows p. 70 by user choice.
   butAScratch: {
     "key": "butAScratch",
