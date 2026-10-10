@@ -1,4 +1,5 @@
 const {
+  BooleanField,
   NumberField,
   SchemaField
 } = foundry.data.fields;
@@ -18,6 +19,13 @@ export class DoomBCRaceData
 
   static defineSchema() {
     return {
+      // null preserves legacy races; unknown names require an explicit choice.
+      isSpaceMarine: new BooleanField({
+        required: true,
+        nullable: true,
+        initial: null
+      }),
+
       characteristics: new SchemaField({
         weaponSkill: startingCharacteristic(),
         ballisticSkill: startingCharacteristic(),

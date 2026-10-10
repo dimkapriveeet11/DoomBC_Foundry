@@ -38,7 +38,8 @@ import {
 } from "./character/purchase-skill-advancement.js";
 
 import {
-  purchaseTalent
+  purchaseTalent,
+  getTalentPurchaseDetails
 } from "./character/purchase-talent.js";
 
 import {
@@ -171,6 +172,7 @@ Hooks.once("init", () => {
       purchaseCharacteristicAdvancement,
       purchaseSkillAdvancement,
       purchaseTalent,
+      getTalentPurchaseDetails,
 
       checkTalentPrerequisites,
       assertTalentPrerequisites

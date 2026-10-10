@@ -1,3 +1,5 @@
+import { getSoundConstitutionDetails } from "./sound-constitution.js";
+
 import { logger } from "../core/logger.js";
 
 import {
@@ -147,7 +149,33 @@ function hasTalent(
   });
 }
 
-export async function purchaseTalent(
+// Use this talent-aware preview for special prices; generic Tier tables are unchanged.
+export function getTalentPurchaseDetails(actor, talentKey) {
+  validateActor(actor);
+  const definition = getTalentDefinition(talentKey);
+  if (!definition) throw new Error(`DoomBC | Неизвестный Талант: ${talentKey}`);
+  if (definition.key === "soundConstitution") return getSoundConstitutionDetails(actor);
+  return getAdvancementCostDetails(actor, "talent", definition.tier, definition.patronage);
+}
+
+// Prevent overlapping purchases on the same local Actor from bypassing the cap
+// or overwriting XP/history. This is not a lock across different Foundry clients.
+const pendingPurchases = new WeakSet();
+
+export async function purchaseTalent(actor, talentKey, specialization = "") {
+  validateActor(actor);
+  if (pendingPurchases.has(actor)) {
+    throw new Error("DoomBC | Дождитесь завершения предыдущей покупки Таланта.");
+  }
+  pendingPurchases.add(actor);
+  try {
+    return await performTalentPurchase(actor, talentKey, specialization);
+  } finally {
+    pendingPurchases.delete(actor);
+  }
+}
+
+async function performTalentPurchase(
   actor,
   talentKey,
   specialization = ""
@@ -199,13 +227,10 @@ export async function purchaseTalent(
       key
     );
 
-  const details =
-    getAdvancementCostDetails(
-      actor,
-      "talent",
-      definition.tier,
-      definition.patronage
-    );
+  const details = getTalentPurchaseDetails(actor, key);
+  if (key === "soundConstitution" && details.remaining === 0) {
+    throw new Error(`DoomBC | Достигнут лимит Sound Constitution: ${details.purchased}/${details.limit}.`);
+  }
 
   const cost =
     Number(details.cost);
@@ -304,7 +329,7 @@ export async function purchaseTalent(
   });
 
   logger.info(
-    `Talent purchased: ${displayName}, Tier ${definition.tier}, ${details.relation}, ${cost} XP -> ${actor.name}`
+    `Talent purchased: ${displayName}, ${definition.tier === 0 ? "Особое" : `Tier ${definition.tier}`}, ${details.relation}, ${cost} XP -> ${actor.name}`
   );
 
   return {

@@ -88,7 +88,8 @@ export class DoomBCTalentData
         required: true,
         nullable: false,
         integer: true,
-        min: 1,
+        // 0 denotes a special talent without a standard Tier (Core p. 67).
+        min: 0,
         max: 3,
         initial: 1
       }),

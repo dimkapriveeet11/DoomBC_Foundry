@@ -1,4 +1,17 @@
 export const TALENTS = {
+  soundConstitution: {
+    key: "soundConstitution",
+    name: "Sound Constitution",
+    // Special advancement: no standard Tier or patronage cost table.
+    tier: 0,
+    patronage: "undivided",
+    prerequisites: "",
+    requirements: [],
+    specialization: "",
+    repeatable: true,
+    description: "Крепкое Телосложение. +1 Рана. Цена: 100 XP или 70 XP при Покровительстве Нургла. Можно приобрести до T.b раз, ещё +2 раза для не-Космодесантников. Эффект +1 Рана пока применяется вручную."
+  },
+
   // =========================================================
   // Проверенные ранее таланты
   // =========================================================

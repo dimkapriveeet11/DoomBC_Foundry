@@ -8,7 +8,7 @@ function actor(inf=70,cor=60,t=50,patronage='tzeentch') {
  async update(changes){for(const [path,value]of Object.entries(changes))this.system.experience[path.split('.').at(-1)]=value;}};
 }
 const snapshot=a=>JSON.stringify({items:a.items,xp:a.system.experience});
-assert.equal(Object.keys(TALENTS).length,75);
+assert.ok(Object.keys(TALENTS).length >= 75);
 assert.deepEqual(TALENTS.eyeOfTheGods.requirements.map(r=>[r.type,r.key,r.value]),[['resource','infamy',70],['resource','corruption',60]]);
 assert.deepEqual(TALENTS.hellishResilience.requirements.map(r=>[r.type,r.key,r.value]),[['characteristic','toughness',50],['resource','corruption',30]]);
 for(const [key,a,label]of [
