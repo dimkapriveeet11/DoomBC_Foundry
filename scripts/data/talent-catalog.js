@@ -1740,6 +1740,57 @@ export const TALENTS = {
     "specialization": "",
     "repeatable": false,
     "description": "При отрицательных Ранах уменьшает получаемый урон на T.b до минимума 1; действует и на попадание, переводящее Раны ниже нуля, но оставляет как минимум −1 Рану."
+  },
+
+  // Core, стр. 68. Infamy/Corruption prerequisites; эффекты не автоматизированы.
+  eyeOfTheGods: {
+    "key": "eyeOfTheGods",
+    "name": "Eye of the Gods",
+    "tier": 3,
+    "patronage": "undivided",
+    "prerequisites": "Inf 70, Cor 60",
+    "requirements": [
+      {
+        "type": "resource",
+        "key": "infamy",
+        "value": 70,
+        "specialization": ""
+      },
+      {
+        "type": "resource",
+        "key": "corruption",
+        "value": 60,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Ограничивает потерю Ран от атак рядовых врагов суммарно 10 за Раунд и отдельно 10 от каждого значимого персонажа; игнорирование урона считается действием щита-дефлектора и обходится методами против него."
+  },
+
+  hellishResilience: {
+    "key": "hellishResilience",
+    "name": "Hellish Resilience",
+    "tier": 3,
+    "patronage": "nurgle",
+    "prerequisites": "T 50, Cor 30",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "toughness",
+        "value": 50,
+        "specialization": ""
+      },
+      {
+        "type": "resource",
+        "key": "corruption",
+        "value": 30,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "При получении непоглощённого урона позволяет потратить Очко Бесчестия для +Cor.b поглощения против этого урона и до конца следующего Хода."
   }
 };
 

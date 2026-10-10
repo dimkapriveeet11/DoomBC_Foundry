@@ -147,6 +147,31 @@ function checkCharacteristicRequirement(
   };
 }
 
+// Only explicit character values are allowed; Infamy points are not Infamy.
+function checkResourceRequirement(actor, requirement) {
+  const resources = {
+    infamy: { label: "Inf", value: actor.system.infamy?.value },
+    corruption: { label: "Cor", value: actor.system.corruption }
+  };
+  const resource = Object.hasOwn(resources, requirement.key)
+    ? resources[requirement.key]
+    : null;
+  const raw = resource?.value;
+  const current = typeof raw === "number" && Number.isFinite(raw)
+    ? raw
+    : null;
+  const required = requirement.value;
+
+  return {
+    type: "resource",
+    key: requirement.key,
+    required,
+    current,
+    met: current !== null && Number.isFinite(required) && current >= required,
+    label: `${resource?.label ?? requirement.key} ${required}`
+  };
+}
+
 function checkSkillRequirement(
   actor,
   requirement
@@ -279,6 +304,9 @@ function checkRequirement(
   requirement
 ) {
   switch (requirement.type) {
+    case "resource":
+      return checkResourceRequirement(actor, requirement);
+
     case "characteristic":
       return checkCharacteristicRequirement(
         actor,
