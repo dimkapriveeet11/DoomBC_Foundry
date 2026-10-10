@@ -1346,6 +1346,400 @@ export const TALENTS = {
     "specialization": "",
     "repeatable": false,
     "description": "Уменьшает на 30 штрафы за атаки по необычным целям, которые не наносят прямого урона персонажам, например по летящей гранате."
+  },
+
+  // СТОЙКОСТЬ — Core, стр. 67–68. Данные/покупка; эффекты не автоматизированы.
+  decadence: {
+    "key": "decadence",
+    "name": "Decadence",
+    "tier": 1,
+    "patronage": "slaanesh",
+    "prerequisites": "T 30",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "toughness",
+        "value": 30,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Удваивает пределы накопленных провалов от алкоголя и даёт +10 против негативных эффектов и пост-эффектов наркотиков и Зависимости."
+  },
+
+  dieHard: {
+    "key": "dieHard",
+    "name": "Die Hard",
+    "tier": 1,
+    "patronage": "nurgle",
+    "prerequisites": "W 40",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "willpower",
+        "value": 40,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Позволяет перебрасывать тесты на Кровотечение и смерть от шока."
+  },
+
+  dropAndRoll: {
+    "key": "dropAndRoll",
+    "name": "Drop and Roll",
+    "tier": 1,
+    "patronage": "nurgle",
+    "prerequisites": "",
+    "requirements": [],
+    "specialization": "",
+    "repeatable": false,
+    "description": "За полудействие автоматически тушит себя или согласного либо паникующего персонажа в касании, сбивая потушенного с ног."
+  },
+
+  headGuard: {
+    "key": "headGuard",
+    "name": "Head Guard",
+    "tier": 1,
+    "patronage": "slaanesh",
+    "prerequisites": "P 45, Awareness +10",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "perception",
+        "value": 45,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "awareness",
+        "value": 10,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Раз в Раунд позволяет перенести попадание в голову на выбранную руку, кроме Избирательного попадания в глаз или сочленения шеи."
+  },
+
+  ironJaw: {
+    "key": "ironJaw",
+    "name": "Iron Jaw",
+    "tier": 1,
+    "patronage": "nurgle",
+    "prerequisites": "T 40",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "toughness",
+        "value": 40,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Позволяет тестом T +0 проигнорировать получаемое Оглушение."
+  },
+
+  snakeEater: {
+    "key": "snakeEater",
+    "name": "Snake Eater",
+    "tier": 1,
+    "patronage": "nurgle",
+    "prerequisites": "T 40, Medicae +0",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "toughness",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "medicae",
+        "value": 0,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Уменьшает вдвое урон от ядов и длительность Отравления, эффектов ядов и пост-эффектов стимуляторов с округлением вверх."
+  },
+
+  resistance: {
+    "key": "resistance",
+    "name": "Resistance",
+    "tier": 1,
+    "patronage": "nurgle",
+    "prerequisites": "",
+    "requirements": [],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Даёт +10 на тесты сопротивления угрозам выбранной специализации.",
+    "specializations": [
+      "Cold",
+      "Blindness",
+      "Deafness",
+      "Disease",
+      "Fear",
+      "Heat",
+      "Poison",
+      "Psychic Powers",
+      "Stun"
+    ]
+  },
+
+  thumper: {
+    "key": "thumper",
+    "name": "Thumper",
+    "tier": 1,
+    "patronage": "nurgle",
+    "prerequisites": "",
+    "requirements": [],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Даёт Преимущество на тесты T против Оглушения ударными волнами, уменьшает вдвое штрафы инфразвука с округлением вверх и на 20 — штраф слышимости речи сквозь шум."
+  },
+
+  armourMonger: {
+    "key": "armourMonger",
+    "name": "Armour-Monger",
+    "tier": 2,
+    "patronage": "undivided",
+    "prerequisites": "I 35, Tech-Use +0, Trade (Armourer) +0",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "intelligence",
+        "value": 35,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "techUse",
+        "value": 0,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "trade",
+        "value": 0,
+        "specialization": "Armourer"
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Увеличивает AP личной брони на 2 на всех участках при ежедневном часовом обслуживании."
+  },
+
+  // По решению пользователя: требования из описания (стр. 68), не таблицы (стр. 67).
+  finalPush: {
+    "key": "finalPush",
+    "name": "Final Push",
+    "tier": 2,
+    "patronage": "nurgle",
+    "prerequisites": "",
+    "requirements": [],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Позволяет тестом T +0 отложить применение полученных Критических Эффектов до конца своего Хода."
+  },
+
+  hunkerDown: {
+    "key": "hunkerDown",
+    "name": "Hunker Down",
+    "tier": 2,
+    "patronage": "nurgle",
+    "prerequisites": "",
+    "requirements": [],
+    "specialization": "",
+    "repeatable": false,
+    "description": "За полудействие удваивает расчётный AP укрытия и даёт обычный AP укрытия выглядывающим частям тела до начала следующего Хода."
+  },
+
+  tireless: {
+    "key": "tireless",
+    "name": "Tireless",
+    "tier": 2,
+    "patronage": "nurgle",
+    "prerequisites": "T 45",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "toughness",
+        "value": 45,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Убирает штраф −10 от Усталости для действий без типа Ментальное."
+  },
+
+  hardy: {
+    "key": "hardy",
+    "name": "Hardy",
+    "tier": 2,
+    "patronage": "nurgle",
+    "prerequisites": "T 40",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "toughness",
+        "value": 40,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Для лечения персонаж всегда считается легко раненным."
+  },
+
+  mentalFortitude: {
+    "key": "mentalFortitude",
+    "name": "Mental Fortitude",
+    "tier": 2,
+    "patronage": "tzeentch",
+    "prerequisites": "W 45",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "willpower",
+        "value": 45,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "При Усталости не выше W.b не получает её штрафов; теряет сознание при T.b + 2×W.b вместо T.b + W.b."
+  },
+
+  stonewall: {
+    "key": "stonewall",
+    "name": "Stonewall",
+    "tier": 2,
+    "patronage": "nurgle",
+    "prerequisites": "S 40, T 40",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "strength",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "characteristic",
+        "key": "toughness",
+        "value": 40,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Тест S +0 позволяет игнорировать сбивание с ног или принудительное перемещение; при рукопашном приёме на 5+ Успехах можно соответственно сбить или сдвинуть атакующего."
+  },
+
+  ablativeHardening: {
+    "key": "ablativeHardening",
+    "name": "Ablative Hardening",
+    "tier": 3,
+    "patronage": "undivided",
+    "prerequisites": "Trade (Armourer) +20",
+    "requirements": [
+      {
+        "type": "skill",
+        "key": "trade",
+        "value": 20,
+        "specialization": "Armourer"
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "После часового обслуживания броня получает I.b зарядов прочности; каждый позволяет игнорировать один эффект снижения AP."
+  },
+
+  hardenedSoul: {
+    "key": "hardenedSoul",
+    "name": "Hardened Soul",
+    "tier": 3,
+    "patronage": "tzeentch",
+    "prerequisites": "Forbidden Lore (Warp) +10",
+    "requirements": [
+      {
+        "type": "skill",
+        "key": "forbiddenLore",
+        "value": 10,
+        "specialization": "Warp"
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Добавляет половину I.b с округлением вверх к поглощению урона варп-оружия и на столько же уменьшает кубики урона при проигрыше против Выжигания Души, минимум до одного."
+  },
+
+  neverDie: {
+    "key": "neverDie",
+    "name": "Never Die",
+    "tier": 3,
+    "patronage": "nurgle",
+    "prerequisites": "W 50, T 50",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "willpower",
+        "value": 50,
+        "specialization": ""
+      },
+      {
+        "type": "characteristic",
+        "key": "toughness",
+        "value": 50,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Позволяет потратить Очко Бесчестия, чтобы игнорировать все эффекты полученного Критического Эффекта; урон не предотвращается."
+  },
+
+  painIsAnIllusion: {
+    "key": "painIsAnIllusion",
+    "name": "Pain Is an Illusion",
+    "tier": 3,
+    "patronage": "tzeentch",
+    "prerequisites": "W 50",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "willpower",
+        "value": 50,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Тест W +0 уменьшает полученный Критический Эффект на число Успехов, минимум до 1."
+  },
+
+  trueGrit: {
+    "key": "trueGrit",
+    "name": "True Grit",
+    "tier": 3,
+    "patronage": "nurgle",
+    "prerequisites": "T 45",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "toughness",
+        "value": 45,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "При отрицательных Ранах уменьшает получаемый урон на T.b до минимума 1; действует и на попадание, переводящее Раны ниже нуля, но оставляет как минимум −1 Рану."
   }
 };
 

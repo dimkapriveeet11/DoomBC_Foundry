@@ -49,7 +49,7 @@ function actorFor(requirements) {
   }
   return actor;
 }
-assert.equal(Object.keys(TALENTS).length,53);
+assert.ok(Object.keys(TALENTS).length >= 53);
 for (const [key,tier,patronage,prerequisites] of expected) {
   const definition=TALENTS[key];
   assert.deepEqual([definition.tier,definition.patronage,definition.prerequisites],[tier,patronage,prerequisites],key);
