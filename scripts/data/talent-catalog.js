@@ -1,4 +1,234 @@
 export const TALENTS = {
+  // Разбойник — Core, стр. 74; Ambidextrous — стр. 85.
+  backstab: {
+    "key": "backstab",
+    "name": "Backstab",
+    "tier": 1,
+    "patronage": "tzeentch",
+    "prerequisites": "Stealth +0",
+    "requirements": [
+      {
+        "type": "skill",
+        "key": "stealth",
+        "value": 0,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "При попадании незримой Избирательной атакой ножом удваивает базовые кубики урона этой атаки. Дополнительные кубики от других Талантов, например Raptor, не удваиваются."
+  },
+  closeQuarters: {
+    "key": "closeQuarters",
+    "name": "Close Quarters",
+    "tier": 1,
+    "patronage": "slaanesh",
+    "prerequisites": "A 40",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 40,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Если вооружён ножом, кулаками, когтями и/или пистолетом, противники, начавшие свой Ход в рукопашной с ним, не получают против него бонусов за более длинное оружие и получают –10 на попадание оружием с Rng более 2."
+  },
+  coupDeGrace: {
+    "key": "coupDeGrace",
+    "name": "Coup de Grace",
+    "tier": 1,
+    "patronage": "undivided",
+    "prerequisites": "Precise Blow",
+    "requirements": [
+      {
+        "type": "talent",
+        "key": "preciseBlow",
+        "value": 0,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "При попадании по сочленениям или глазам Оглушённой либо Лежащей цели удваивает урон, как против Беспомощной. Требуется нож в любом хвате либо меч или копьё в Ближнем Хвате."
+  },
+  streetFighting: {
+    "key": "streetFighting",
+    "name": "Street Fighting",
+    "tier": 1,
+    "patronage": "slaanesh",
+    "prerequisites": "WS 30",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 30,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Увеличивает Критический Эффект от ножей или кулаков на половину WS.b с округлением вверх, максимум +5; действует и при Отрицательных Ранах, и при Экстремальном Уроне."
+  },
+  bladeJuggler: {
+    "key": "bladeJuggler",
+    "name": "Blade Juggler",
+    "tier": 2,
+    "patronage": "slaanesh",
+    "prerequisites": "WS 40, Deceive +0, Ambidextrous",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "deceive",
+        "value": 0,
+        "specialization": ""
+      },
+      {
+        "type": "talent",
+        "key": "ambidextrous",
+        "value": 0,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "С ножом и пустой рукой раз в Ход ментальным свободным действием проходит Deceive(WS)+0 vs Awareness(P)+0. При победе цель получает штраф Успехи×5 к Избеганиям от следующей атаки ножом в этот Ход. Независимо от результата свободная рука занята и не может атаковать в этот Ход."
+  },
+  knifeFighter: {
+    "key": "knifeFighter",
+    "name": "Knife Fighter",
+    "tier": 2,
+    "patronage": "undivided",
+    "prerequisites": "WS 40",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 40,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Может перебрасывать урон ножей; ножи с d10 урона получают Extreme (9)."
+  },
+  ridingTheMomentum: {
+    "key": "ridingTheMomentum",
+    "name": "Riding the Momentum",
+    "tier": 2,
+    "patronage": "slaanesh",
+    "prerequisites": "A 45",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 45,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Может совершать Уклонение со штрафом –10 после Полной Атаки кулаками или ножами в любой комбинации. Парирование не разрешается этим Талантом."
+  },
+  sabotage: {
+    "key": "sabotage",
+    "name": "Sabotage",
+    "tier": 2,
+    "patronage": "tzeentch",
+    "prerequisites": "P 35, Tech-Use +0",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "perception",
+        "value": 35,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "techUse",
+        "value": 0,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Избирательной атакой ножом по оружию Клинит стрелковое (без Перегрева) или отключает высокотехнологичное рукопашное; восстановление через Расклин. Обычные штрафы: –10 тяжёлое, –20 винтовки и рукопашное с Хватом Л+П, –30 пистолеты и рукопашное, –40 ножи и компактные пистолеты. В комбинированном оружии выбирает все рукопашные профили либо один стрелковый. Оставленный нож запрещает Расклин до извлечения полудействием. Против питания проводами, лентами или шлангами получает +20; после Расклина нужна Перезарядка/подключение. От атаки можно Избегать."
+  },
+  blindside: {
+    "key": "blindside",
+    "name": "Blindside",
+    "tier": 3,
+    "patronage": "tzeentch",
+    "prerequisites": "A 40, Stealth +20",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "stealth",
+        "value": 20,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Раз в Ход при численном преимуществе ментальным свободным действием проходит Stealth(A)+0 vs Awareness(P)+0. При победе, если следующим действием атакует эту цель ножом, атака считается Незримой. Другому существу для отмены атаки Реакцией или принятия её на себя нужно победить Успехи персонажа тестом Awareness(P)+0."
+  },
+  razorsEdge: {
+    "key": "razorsEdge",
+    "name": "Razor's Edge",
+    "tier": 3,
+    "patronage": "slaanesh",
+    "prerequisites": "WS 40, A 50",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 50,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Если Инициатива выше, чем у цели, добавляет разницу к урону ножей, максимум +10; бонус не учитывается для пробития брони. При Избегании одиночного удара его ножом более медленная цель должна перебить все Успехи попадания, как если бы получила столько попаданий."
+  },
+  ambidextrous: {
+    "key": "ambidextrous",
+    "name": "Ambidextrous",
+    "tier": 1,
+    "patronage": "undivided",
+    "prerequisites": "A 30",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 30,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Не получает штраф –20 за оружие в неосновной руке и уменьшает штраф за парное оружие на 10."
+  },
+
   // Рукопашные — Core, стр. 71–73; Two Weapon Wielder — стр. 85.
   doubleTeam: {
     "key": "doubleTeam",
