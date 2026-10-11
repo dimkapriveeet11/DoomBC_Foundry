@@ -1,4 +1,384 @@
 export const TALENTS = {
+  // Пугилист — Core, стр. 75–76.
+  headcracker: {
+    "key": "headcracker",
+    "name": "Headcracker",
+    "tier": 1,
+    "patronage": "undivided",
+    "prerequisites": "WS 35",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 35,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Безоружный удар головой (не рогами): уменьшает штраф Избирательной атаки в голову на 20 и не считает её ментальной; попадание в голову получает Concussive (0). При 5+ Успехах попадания восстанавливает потраченную на удар Реакцию, даже если цель Избежала."
+  },
+  rollingWithPunches: {
+    "key": "rollingWithPunches",
+    "name": "Rolling With Punches",
+    "tier": 1,
+    "patronage": "slaanesh",
+    "prerequisites": "A 40, Unarmed Warrior",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "talent",
+        "key": "unarmedWarrior",
+        "value": 0,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Получает +½A.b поглощения против безоружных атак, если не Оглушён, не Беспомощен и атака не Незримая. При этом против Concussive от безоружного попадания в голову делает два теста: через T и через A; достаточно успеха любого."
+  },
+  roundhouseKick: {
+    "key": "roundhouseKick",
+    "name": "Roundhouse Kick",
+    "tier": 1,
+    "patronage": "undivided",
+    "prerequisites": "S 40, Athletics +0",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "strength",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "athletics",
+        "value": 0,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "После попадания пинком с Натиска по цели не больше себя (включая Парирование, но не Уклонение) тест Athletics(S)+10 vs Athletics(S)+0 отбрасывает её на ½ м за Успех, максимум ½S.b м. Если отброшена дальше ¼ её A.b, цель Сбивается с ног. При достаточной дистанции можно продолжить Натиск вслед за ней."
+  },
+  unarmedWarrior: {
+    "key": "unarmedWarrior",
+    "name": "Unarmed Warrior",
+    "tier": 1,
+    "patronage": "khorne",
+    "prerequisites": "WS 35, A 35",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 35,
+        "specialization": ""
+      },
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 35,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Улучшает профили безоружных атак (Core, стр. 40), заменяет все d5 в уроне Кулаков на d10. Вооружённый противник не получает бонуса к Парированию его безоружных атак и не наносит урон успешным Парированием."
+  },
+  whack: {
+    "key": "whack",
+    "name": "Whack",
+    "tier": 1,
+    "patronage": "khorne",
+    "prerequisites": "WS 30",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 30,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Может атаковать безоружно рукой с одноручным рукопашным оружием, кроме Хвата П+Л. Противники, ещё не видевшие этот приём в текущем бою, получают –30 к Избеганию такой атаки; ГМ может потребовать Awareness от наблюдателей."
+  },
+  chokehold: {
+    "key": "chokehold",
+    "name": "Chokehold",
+    "tier": 2,
+    "patronage": "khorne",
+    "prerequisites": "S 40, WS 40",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "strength",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 40,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Против живых существ, нуждающихся в кислороде: Сжать наносит 1 Усталости; Заломить — по 1 за Успех победы либо 1 даже при проигрыше. Победа во встречном Athletics Захвата на 5+ Успехов наносит по 1 Усталости за каждые полные 5 Успехов победы."
+  },
+  goadingStrike: {
+    "key": "goadingStrike",
+    "name": "Goading Strike",
+    "tier": 2,
+    "patronage": "tzeentch",
+    "prerequisites": "WS 45",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 45,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Может дать атаке кулаком –20, чтобы при Успехе немедленно провести Давление по цели свободным действием, даже если цель Избежала попадания."
+  },
+  haymaker: {
+    "key": "haymaker",
+    "name": "Haymaker",
+    "tier": 2,
+    "patronage": "khorne",
+    "prerequisites": "S 40, T 40",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "strength",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "characteristic",
+        "key": "toughness",
+        "value": 40,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "До броска атаки кулаком может отказаться от атаки ещё одной рукой в этот Ход ради +½T.b Dmg. Получившая попадание цель проходит встречный S+0 vs S+0 или Сбивается с ног."
+  },
+  pounce: {
+    "key": "pounce",
+    "name": "Pounce",
+    "tier": 2,
+    "patronage": "khorne",
+    "prerequisites": "Athletics +10",
+    "requirements": [
+      {
+        "type": "skill",
+        "key": "athletics",
+        "value": 10,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Успешный Захват с базой Натиск и победа во встречном Athletics на 3+ Успеха позволяют свободным действием провести Повалить. Победа в нём на 5+ Успехов позволяет схватить цель минимум двумя руками, упасть вместе с ней и свободными действиями провести Сжать, затем Заломить."
+  },
+  slam: {
+    "key": "slam",
+    "name": "Slam",
+    "tier": 2,
+    "patronage": "khorne",
+    "prerequisites": "S 50, Athletics +20",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "strength",
+        "value": 50,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "athletics",
+        "value": 20,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "При взятии цели в Захват, победе во встречном Athletics на 5+ Успехов и достаточном весе подъёма может немедленно свободным действием метнуть цель или использовать её как импровизированное оружие."
+  },
+  thunderCharge: {
+    "key": "thunderCharge",
+    "name": "Thunder Charge",
+    "tier": 2,
+    "patronage": "khorne",
+    "prerequisites": "S 50",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "strength",
+        "value": 50,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "При Напролом проигравшие встречный тест противники всегда Сбиваются с ног и получают урон, как при проигрыше на 5+ Провалов."
+  },
+  unarmedMaster: {
+    "key": "unarmedMaster",
+    "name": "Unarmed Master",
+    "tier": 2,
+    "patronage": "khorne",
+    "prerequisites": "WS 45, A 40, Unarmed Warrior",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 45,
+        "specialization": ""
+      },
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "talent",
+        "key": "unarmedWarrior",
+        "value": 0,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Безоружные атаки теряют Primitive; считается вооружённым при Парировании голыми руками. Его Захват нельзя Парировать; оружие-кулаки с Балансом ниже 0 получает +1 к Балансу."
+  },
+  wrestler: {
+    "key": "wrestler",
+    "name": "Wrestler",
+    "tier": 2,
+    "patronage": "khorne",
+    "prerequisites": "S 40, Athletics +20",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "strength",
+        "value": 40,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "athletics",
+        "value": 20,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Раз в Ход может перебросить тест на Борьбу, приём Захвата или Уклонение от чужого Захвата. Противники перебрасывают успешные Уклонения от его Захвата."
+  },
+  flyingKick: {
+    "key": "flyingKick",
+    "name": "Flying Kick",
+    "tier": 3,
+    "patronage": "undivided",
+    "prerequisites": "WS 30, Operate (Aeronautica) +20",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "weaponSkill",
+        "value": 30,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "operateAeronautica",
+        "value": 20,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "В Раунд Натиска в полёте или боя в воздухе с летающим противником получает Multiple Arms (+2), отражающий удары ногами. Бонус меняется согласно числу ног персонажа."
+  },
+  jockey: {
+    "key": "jockey",
+    "name": "Jockey",
+    "tier": 3,
+    "patronage": "slaanesh",
+    "prerequisites": "A 50, Acrobatics +10",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "agility",
+        "value": 50,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "acrobatics",
+        "value": 10,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Может Захватывать более крупную цель через Acrobatics(A) вместо Athletics(S), игнорируя штрафы разницы Размеров, вплоть до +2 Размера. При победе взбирается на цель: та не может его атаковать как в Захвате, но иначе свободно действует; бонус атак по ней от Борьбы половинный. Раз в Раунд при её физическом действии победа в Acrobatics(A)+30 vs Athletics(S)+0, игнорируя Unnatural S цели, заменяет действие Полудвижением под контролем персонажа. Атаки по нему не получают +20 за Борьбу; цель можно использовать как укрытие."
+  },
+  kneeStrike: {
+    "key": "kneeStrike",
+    "name": "Knee Strike",
+    "tier": 3,
+    "patronage": "khorne",
+    "prerequisites": "S 35, Athletics +10",
+    "requirements": [
+      {
+        "type": "characteristic",
+        "key": "strength",
+        "value": 35,
+        "specialization": ""
+      },
+      {
+        "type": "skill",
+        "key": "athletics",
+        "value": 10,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "После успешного Захвата минимум двумя руками немедленно наносит автоматическое попадание в торс ногой, ещё не атаковавшей в этот Ход, профилем безоружного пинка независимо от другого оружия на ноге. Победа в Athletics на 5+ Успехов позволяет вместо этого ударить в голову с Concussive (0)."
+  },
+  pinDown: {
+    "key": "pinDown",
+    "name": "Pin Down",
+    "tier": 3,
+    "patronage": "khorne",
+    "prerequisites": "Athletics +20",
+    "requirements": [
+      {
+        "type": "skill",
+        "key": "athletics",
+        "value": 20,
+        "specialization": ""
+      }
+    ],
+    "specialization": "",
+    "repeatable": false,
+    "description": "Удерживая врага в Борьбе минимум двумя руками, раз в Ход свободным действием проводит Сжать. До следующего Хода цель получает штраф ко всем физическим действиям: ((T.b + Размер×3 персонажа) − (T.b + Размер×3 цели))×5, минимум 0. Атаки по персонажу не получают обычный бонус +20 за Борьбу."
+  },
+
   // Разбойник — Core, стр. 74; Ambidextrous — стр. 85.
   backstab: {
     "key": "backstab",
